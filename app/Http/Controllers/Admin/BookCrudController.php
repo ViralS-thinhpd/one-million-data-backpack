@@ -24,9 +24,11 @@ class BookCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
+        $this->crud->orderBy('id','DESC');
         $this->crud->setModel('App\Models\Book');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/book');
         $this->crud->setEntityNameStrings('book', 'books');
+        $this->crud->enableExportButtons();
 
         /*
         |--------------------------------------------------------------------------

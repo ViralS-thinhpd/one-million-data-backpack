@@ -37,6 +37,8 @@ class AuthorCrudController extends CrudController
         $this->crud->setFromDb();
 
         // add asterisk for fields that are required in AuthorRequest
+        $this->crud->enableExportButtons();
+        $this->crud->orderBy('id','DESC');
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
