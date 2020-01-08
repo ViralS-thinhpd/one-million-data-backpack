@@ -23,7 +23,6 @@ class CustomerCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->orderBy('id','DESC');
         $this->crud->setModel('App\Models\Customer');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/customer');
         $this->crud->setEntityNameStrings('customer', 'customers');
