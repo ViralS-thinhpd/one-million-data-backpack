@@ -15,7 +15,6 @@ class CustomerTableSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-        $books = Book::all()->pluck('id')->toArray();
 
         for ($i = 1; $i <= 10000 ;$i++)
         {
@@ -25,12 +24,13 @@ class CustomerTableSeeder extends Seeder
                 'address' => $faker->address,
             ]);
         }
-        $customers = Customer::all()->pluck('id')->toArray();
+        $books = Book::all()->count();
+        $customers = Customer::all()->count();
         for ($i = 1; $i <= 10000 ;$i++)
         {
             DB::table('book_customer')->insert([
-                'book_id' => $faker->randomElement($books),
-                'customer_id' => $faker->randomElement($customers),
+                'book_id' => $faker->numberBetween(1, $books),
+                'customer_id' => $faker->numberBetween(1, $customers),
             ]);
         }
 
