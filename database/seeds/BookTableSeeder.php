@@ -14,13 +14,14 @@ class BookTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         $authors = \App\Models\Author::all()->count();
-
+        $bookData = array();
         for ($i = 1; $i <= 10000 ;$i++)
         {
-            Book::create([
+            $bookData[] = array(
                 'name' => $faker->name,
                 'author_id' => $faker->numberBetween(1, $authors),
-            ]);
+            );
         }
+        Book::insert($bookData);
     }
 }

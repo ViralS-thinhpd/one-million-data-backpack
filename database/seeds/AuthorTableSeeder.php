@@ -13,12 +13,13 @@ class AuthorTableSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-
+        $authorData = array();
         for ($i = 1; $i <= 10000 ;$i++)
         {
-            Author::create([
+            $authorData[] = array(
                 'name' => $faker->name,
-            ]);
+            );
         }
+        Author::insert($authorData);
     }
 }
